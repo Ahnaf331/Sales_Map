@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Analytics Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .maps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .map-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .map-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+        
+        .map-icon {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+        
+        .map-content {
+            padding: 25px;
+        }
+        
+        .map-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .map-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .btn-view {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .btn-view:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .footer a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .maps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SALES ANALYTICS DASHBOARD</h1>
+            <p>Bangladesh Sales Intelligence & Territory Management</p>
+        </div>
+        
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-value">3,759+</div>
+                <div class="stat-label">Total Records</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Interactive Maps</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">51</div>
+                <div class="stat-label">Cities</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Regions</div>
+            </div>
+        </div>
+        
+        <div class="maps-grid">
+            <div class="map-card" onclick="window.open('sales_map.html', '_blank')">
+                <div class="map-icon">📊</div>
+                <div class="map-content">
+                    <div class="map-title">Sales Coverage Map</div>
+                    <div class="map-description">
+                        Visualization of 1,000 sales records across Bangladesh with category analysis.
+                    </div>
+                    <a href="sales_map.html" class="btn-view" onclick="event.stopPropagation()">View Map</a>
+                </div>
+            </div>
+            
+            <div class="map-card" onclick="window.open('visit_coverage_map.html', '_blank')">
+                <div class="map-icon">📍</div>
+                <div class="map-content">
+                    <div class="map-title">Visit Coverage Map</div>
+                    <div class="map-description">
+                        800 salesperson visits with coverage intensity (1-6 scale) analysis.
+                    </div>
+                    <a href="visit_coverage_map.html" class="btn-view" onclick="event.stopPropagation()">View Map</a>
+                </div>
+            </div>
+            
+            <div class="map-card" onclick="window.open('not_ordered_outlets_map.html', '_blank')">
+                <div class="map-icon">🏪</div>
+                <div class="map-content">
+                    <div class="map-title">Not Ordered Outlets</div>
+                    <div class="map-description">
+                        1,500 outlets without orders, prioritized by potential value.
+                    </div>
+                    <a href="not_ordered_outlets_map.html" class="btn-view" onclick="event.stopPropagation()">View Map</a>
+                </div>
+            </div>
+            
+            <div class="map-card" onclick="window.open('brand_coverage_map.html', '_blank')">
+                <div class="map-icon">🏷️</div>
+                <div class="map-content">
+                    <div class="map-title">Brand Coverage Map</div>
+                    <div class="map-description">
+                        150 brand locations showing market penetration and coverage scores.
+                    </div>
+                    <a href="brand_coverage_map.html" class="btn-view" onclick="event.stopPropagation()">View Map</a>
+                </div>
+            </div>
+            
+            <div class="map-card" onclick="window.open('route_map_bangladesh.html', '_blank')">
+                <div class="map-icon">🛣️</div>
+                <div class="map-content">
+                    <div class="map-title">Route Network Map</div>
+                    <div class="map-description">
+                        City connections within 200km with distance calculations and filtering.
+                    </div>
+                    <a href="route_map_bangladesh.html" class="btn-view" onclick="event.stopPropagation()">View Map</a>
+                </div>
+            </div>
+            
+            <div class="map-card" onclick="window.open('sweet_spot_map.html', '_blank')">
+                <div class="map-icon">🎯</div>
+                <div class="map-content">
+                    <div class="map-title">Sweet Spot Map</div>
+                    <div class="map-description">
+                        High-activity zones for focused sales efforts (8+ visits).
+                    </div>
+                    <a href="sweet_spot_map.html" class="btn-view" onclick="event.stopPropagation()">View Map</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Sales Analytics Dashboard v1.0 | Generated: 2025-10-04 02:53:37</p>
+            <a href="central_sales_data.csv" download>📥 Download Central CSV Dataset</a>
+        </div>
+    </div>
+</body>
+</html>
